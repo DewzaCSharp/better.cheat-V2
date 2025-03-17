@@ -1,5 +1,6 @@
 ### a simple console cheat for https://better.game i made
 # steps:
+## 0: Install [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.407-windows-x64-installer)
 ## 1: Start the Game
 ## 2: Start the Cheat
 ## 3: Have Fun Cheating!
