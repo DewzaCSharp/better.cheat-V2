@@ -45,6 +45,8 @@ public class Renderer : Overlay
     public static string processName = "Protoverse";
     public static Globals globals = new Globals();
     public static bool menuvisible = true;
+    public static int customprojectilespeed = 0;
+    public static int custommaxspeed = 0;
     public static void MainMenu()
     {
         if (menuvisible)
@@ -111,8 +113,7 @@ public class Renderer : Overlay
                 Patch(hProcess, sidewaysCameraAddress, Offsets.SidewaysCameraOG);
 
             if (globals.CustomProjectileSpeed)
-            {
-                int customprojectilespeed = 0;
+            {   
                 ImGui.InputInt("", ref customprojectilespeed);
                 if (ImGui.Button("Apply"))
                 {
@@ -120,10 +121,11 @@ public class Renderer : Overlay
                     client.WriteFloat(modulebase + 0x19B9990, customprojectilespeed);
                 }
             }
+            
             if (globals.CustomMaxSpeed)
             {
-                int custommaxspeed = 0;
                 ImGui.InputInt("", ref custommaxspeed);
+                
                 if (ImGui.Button("Apply"))
                 {
                     IntPtr modulebase = client.GetModuleBase("Protoverse.exe");
