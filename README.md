@@ -1,4 +1,4 @@
-### a simple console cheat for https://better.game i made in 10 minutes
+### a simple console cheat for https://better.game i made
 # steps:
 ## 1: Start the Game
 ## 2: Start the Cheat
