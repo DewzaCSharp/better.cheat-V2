@@ -63,6 +63,9 @@ public class Renderer : Overlay
 
             ImGui.Separator();
             ImGui.Checkbox("Infinite Ammo", ref globals.InfAmmo);
+            ImGui.Checkbox("Show Console", ref globals.ConsoleVisible);
+            ImGui.Text("\nIf you got any ideas for other cheat features, pls dm me on Discord: dewzacsharp\n");
+            ImGui.SeparatorText("v removed due to being useless v");
             ImGui.Checkbox("Vertical Camera", ref globals.VerticalCamera);
             ImGui.Checkbox("Horizontal Camera", ref globals.HorizontalCamera);
             ImGui.Checkbox("Fun Camera", ref globals.FunCamera);
@@ -70,7 +73,7 @@ public class Renderer : Overlay
             ImGui.Separator();
             ImGui.Checkbox("Custom Projectile Speed", ref globals.CustomProjectileSpeed);
             ImGui.Checkbox("Custom Max Speed", ref globals.CustomMaxSpeed);
-            ImGui.Checkbox("Show Console", ref globals.ConsoleVisible);
+            ImGui.SeparatorText("^ removed due to being useless ^");
 
             // Putting the memory writing also in here to achieve max FPS when the menu is closed
             // because if people got an ass PC they can just close menu and get more FPS then if menu is open yk
@@ -92,46 +95,46 @@ public class Renderer : Overlay
                 Patch(hProcess, PumpAddress, Offsets.PumpAmmoOG);
             }
 
-            if (globals.VerticalCamera)
-                Patch(hProcess, cameraUpDownAddress, Offsets.CameraUpDownPatch);
-            else if (!globals.VerticalCamera)
-                Patch(hProcess, cameraUpDownAddress, Offsets.CameraUpDownOG);
-
-            if (globals.HorizontalCamera)
-                Patch(hProcess, cameraLeftRightAddress, Offsets.CameraLeftRightPatch);
-            else if (!globals.HorizontalCamera)
-                Patch(hProcess, cameraLeftRightAddress, Offsets.CameraLeftRightOG);
-
-            if (globals.FunCamera)
-                Patch(hProcess, cameraFunAddress, Offsets.CameraFunPatch);
-            else if (!globals.FunCamera)
-                Patch(hProcess, cameraFunAddress, Offsets.CameraFunOG);
-
-            if (globals.SideWaysCamera)
-                Patch(hProcess, sidewaysCameraAddress, Offsets.SidewaysCameraPatch);
-            else if (!globals.SideWaysCamera)
-                Patch(hProcess, sidewaysCameraAddress, Offsets.SidewaysCameraOG);
-
-            if (globals.CustomProjectileSpeed)
-            {   
-                ImGui.InputInt("", ref customprojectilespeed);
-                if (ImGui.Button("Apply"))
-                {
-                    IntPtr modulebase = client.GetModuleBase("Protoverse.exe");
-                    client.WriteFloat(modulebase + 0x19B9990, customprojectilespeed);
-                }
-            }
-            
-            if (globals.CustomMaxSpeed)
-            {
-                ImGui.InputInt("", ref custommaxspeed);
-                
-                if (ImGui.Button("Apply"))
-                {
-                    IntPtr modulebase = client.GetModuleBase("Protoverse.exe");
-                    client.WriteFloat(modulebase + 0xDF1BF8, custommaxspeed);
-                }
-            }
+            //if (globals.VerticalCamera)
+            //    Patch(hProcess, cameraUpDownAddress, Offsets.CameraUpDownPatch);
+            //else if (!globals.VerticalCamera)
+            //    Patch(hProcess, cameraUpDownAddress, Offsets.CameraUpDownOG);
+            //
+            //if (globals.HorizontalCamera)
+            //    Patch(hProcess, cameraLeftRightAddress, Offsets.CameraLeftRightPatch);
+            //else if (!globals.HorizontalCamera)
+            //    Patch(hProcess, cameraLeftRightAddress, Offsets.CameraLeftRightOG);
+            //
+            //if (globals.FunCamera)
+            //    Patch(hProcess, cameraFunAddress, Offsets.CameraFunPatch);
+            //else if (!globals.FunCamera)
+            //    Patch(hProcess, cameraFunAddress, Offsets.CameraFunOG);
+            //
+            //if (globals.SideWaysCamera)
+            //    Patch(hProcess, sidewaysCameraAddress, Offsets.SidewaysCameraPatch);
+            //else if (!globals.SideWaysCamera)
+            //    Patch(hProcess, sidewaysCameraAddress, Offsets.SidewaysCameraOG);
+            //
+            //if (globals.CustomProjectileSpeed)
+            //{   
+            //    ImGui.InputInt("", ref customprojectilespeed);
+            //    if (ImGui.Button("Apply"))
+            //    {
+            //        IntPtr modulebase = client.GetModuleBase("Protoverse.exe");
+            //        client.WriteFloat(modulebase + 0x19B9990, customprojectilespeed);
+            //    }
+            //}
+            //
+            //if (globals.CustomMaxSpeed)
+            //{
+            //    ImGui.InputInt("", ref custommaxspeed);
+            //    
+            //    if (ImGui.Button("Apply"))
+            //    {
+            //        IntPtr modulebase = client.GetModuleBase("Protoverse.exe");
+            //        client.WriteFloat(modulebase + 0xDF1BF8, custommaxspeed);
+            //    }
+            //}
         }
     }
     public static void RunCommand(string fileName, string arguments)
@@ -147,8 +150,8 @@ public class Renderer : Overlay
     }
     public static Process process = Process.GetProcessesByName(processName)[0];
     public static IntPtr hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, process.Id);
-    public static IntPtr arAddress = process.MainModule.BaseAddress + 0x185B7A;
-    public static IntPtr PumpAddress = process.MainModule.BaseAddress + 0x185491;
+    public static IntPtr arAddress = process.MainModule.BaseAddress + 0x186E9A;
+    public static IntPtr PumpAddress = process.MainModule.BaseAddress + 0x1867B1;
     public static IntPtr cameraUpDownAddress = process.MainModule.BaseAddress + 0x282469;
     public static IntPtr cameraLeftRightAddress = process.MainModule.BaseAddress + 0x282474;
     public static IntPtr cameraFunAddress = process.MainModule.BaseAddress + 0x282495;
